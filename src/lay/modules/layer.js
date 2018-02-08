@@ -1,6 +1,6 @@
 ﻿/**
 
- @Name：layer v3.1.0 Web弹层组件
+ @Name：layer v3.1.2 Web弹层组件
  @Author：贤心
  @Site：http://layer.layui.com
  @License：MIT
@@ -72,7 +72,7 @@ var isLayui = window.layui && layui.define, $, win, ready = {
 
 //默认内置方法。
 var layer = {
-  v: '3.1.0',
+  v: '3.1.1',
   ie: function(){ //ie版本
     var agent = navigator.userAgent.toLowerCase();
     return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
@@ -982,8 +982,8 @@ layer.prompt = function(options, yes){
     style = 'style="width: '+ area[0] +'; height: '+ area[1] + ';"';
     delete options.area;
   }
-  var prompt, content = options.formType == 2 ? '<textarea class="layui-layer-input"' + style +'>' + (options.value||'') +'</textarea>' : function(){
-    return '<input type="'+ (options.formType == 1 ? 'password' : 'text') +'" class="layui-layer-input" value="'+ (options.value||'') +'">';
+  var prompt, content = options.formType == 2 ? '<textarea class="layui-layer-input"' + style +'></textarea>' : function(){
+    return '<input type="'+ (options.formType == 1 ? 'password' : 'text') +'" class="layui-layer-input">';
   }();
   
   var success = options.success;
@@ -997,7 +997,7 @@ layer.prompt = function(options, yes){
     ,maxWidth: win.width()
     ,success: function(layero){
       prompt = layero.find('.layui-layer-input');
-      prompt.focus();
+      prompt.val(options.value || '').focus();
       typeof success === 'function' && success(layero);
     }
     ,resize: false

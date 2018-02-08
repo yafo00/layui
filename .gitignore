@@ -24,7 +24,9 @@ dir.txt
 /**/layim-mobile.js
 /**/layim.html
 /**/layim.m.html
+
 release/
 build/
+rc/
 
 coverage/

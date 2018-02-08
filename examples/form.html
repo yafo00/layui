@@ -22,6 +22,48 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <label class="layui-form-label">输入框</label>
     <div class="layui-input-block">
+      <input type="text" name="xxx " autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="arr[]" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="arr[]" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="bbb[]" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="bbb[]" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <input type="checkbox" name="like1[]" lay-skin="primary" title="写作">
+  <input type="checkbox" name="like1[]" lay-skin="primary" title="写作">
+  <input type="checkbox" name="like1[]" lay-skin="primary" title="写作">
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+<form class="layui-form layui-form-pane1" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
       <input type="text" name="title" lay-verify="required|title" required placeholder="请输入标题" autocomplete="off" class="layui-input">
     </div>
   </div>
@@ -58,7 +100,7 @@ body{padding: 10px;}
     <div class="layui-inline">
       <label class="layui-form-label">行内表单</label>
       <div class="layui-input-block">
-        <select name="quiz">
+        <select name="quiz" lay-verify="required" lay-verType="tips">
           <option value="">请选择问题</option>
           <option value="你工作的第一个城市">你工作的第一个城市</option>
           <option value="你的工号" disabled>你的工号</option>
@@ -69,7 +111,7 @@ body{padding: 10px;}
     <div class="layui-inline">
       <label class="layui-form-label">select分组</label>
       <div class="layui-input-block">
-        <select name="quiz">
+        <select name="quiz" lay-filter="quiz">
           <option value="">请选择问题</option>
           <optgroup label="城市记忆">
             <option value="你工作的第一个城市">你工作的第一个城市</option>
@@ -86,7 +128,7 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <label class="layui-form-label">选择框</label>
     <div class="layui-input-block">
-      <select name="interest" lay-filter="aihao">
+      <select name="interest" lay-filter="interest">
         <option value=""></option>
         <option value="0">写作</option>
         <option value="1" selected>阅读</option>
@@ -100,7 +142,7 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <label class="layui-form-label">搜索选择框</label>
     <div class="layui-input-inline">
-      <select name="interest" lay-filter="aihao" lay-search lay-write>
+      <select name="interest-search" lay-filter="interest-search" lay-search lay-write>
         <option value=""></option>
         <option value="0">写作</option>
         <option value="1">阅读</option>
@@ -194,12 +236,18 @@ layui.use('form', function(){
   
   //事件监听
   form.on('select', function(data){
-    console.log(this);
-  })
-  
-  form.on('select(aihao)', function(data){
-    console.log(data);
+    console.log('select: ', this, data);
   });
+  
+  form.on('select(quiz)', function(data){
+    console.log('select.quiz：', this, data);
+  });
+  
+  form.on('select(interest)', function(data){
+    console.log('select.interest: ', this, data);
+  });
+  
+  
   
   form.on('checkbox', function(data){
     console.log(this.checked, data.elem.checked);
